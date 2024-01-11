@@ -1,0 +1,6 @@
+@MPCShop.API.Category_HostAddress = http://localhost:5194
+
+GET {{MPCShop.API.Category_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

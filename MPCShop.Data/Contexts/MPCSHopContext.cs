@@ -1,7 +1,7 @@
 ﻿using MPCShop.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace eShop.Data.Contexts;
+namespace MPCShop.Data.Contexts;
 
 public class MPCShopContext(DbContextOptions<MPCShopContext> builder) : DbContext(builder)
 {
