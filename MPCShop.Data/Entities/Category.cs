@@ -1,5 +1,4 @@
 ﻿namespace MPCShop.Data.Entities;
-
 public class Category : IEntity
 {
     public int Id { get; set; }
