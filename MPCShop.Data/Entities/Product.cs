@@ -6,6 +6,9 @@ public class Product : IEntity
     public string Name { get; set; }
     public List<Category>? Categories { get; set; }
     public List<Size>? Sizes { get; set; }
+    public List<Brand>? Brands { get; set; }
+    public List<Season>? Seasons { get; set; }
+
 
 
 }
