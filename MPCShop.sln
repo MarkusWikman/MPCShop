@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.Data", "MPCShop.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.Data.Shared", "MPCShop.Data.Shared\MPCShop.Data.Shared.csproj", "{D94D0504-B7B3-474C-980D-9BD9B598B3BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPCShop.API.Category", "MPCShop.API.Category\MPCShop.API.Category.csproj", "{496DB3CE-2D87-4E46-9F2D-CF860A21D835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.API.Category", "MPCShop.API.Category\MPCShop.API.Category.csproj", "{496DB3CE-2D87-4E46-9F2D-CF860A21D835}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
