@@ -1,8 +1,3 @@
-
-
-using AutoMapper;
-using MPCShop.Data.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
