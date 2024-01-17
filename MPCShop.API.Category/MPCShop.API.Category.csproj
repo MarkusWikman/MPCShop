@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MPCShop.API.DTO\MPCShop.API.DTO.csproj" />
+    <ProjectReference Include="..\MPCShop.API.Extensions\MPCShop.API.Extensions.csproj" />
     <ProjectReference Include="..\MPCShop.Data.Shared\MPCShop.Data.Shared.csproj" />
     <ProjectReference Include="..\MPCShop.Data\MPCShop.Data.csproj" />
   </ItemGroup>
