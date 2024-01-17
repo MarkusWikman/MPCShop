@@ -1,13 +1,17 @@
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// SQL Server Service Registration
 builder.Services.AddDbContext<MPCShopContext>(
     options =>
         options.UseSqlServer(
             builder.Configuration.GetConnectionString("MPCShopConnection")));
+
 /**********
  ** CORS Cross-Origin Resource Sharing**
  **********/
@@ -19,6 +23,7 @@ builder.Services.AddCors(policy =>
            .AllowAnyMethod()
     );
 });
+
 
 var app = builder.Build();
 
