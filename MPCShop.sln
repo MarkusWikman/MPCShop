@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.Data.Shared", "MPCS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.API.Category", "MPCShop.API.Category\MPCShop.API.Category.csproj", "{496DB3CE-2D87-4E46-9F2D-CF860A21D835}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.API.Extensions", "MPCShop.API.Extensions\MPCShop.API.Extensions.csproj", "{82C7DCAC-2D19-48BE-95FF-6EE799027F2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.API.DTO", "MPCShop.API.DTO\MPCShop.API.DTO.csproj", "{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{496DB3CE-2D87-4E46-9F2D-CF860A21D835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{496DB3CE-2D87-4E46-9F2D-CF860A21D835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{496DB3CE-2D87-4E46-9F2D-CF860A21D835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C7DCAC-2D19-48BE-95FF-6EE799027F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C7DCAC-2D19-48BE-95FF-6EE799027F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C7DCAC-2D19-48BE-95FF-6EE799027F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C7DCAC-2D19-48BE-95FF-6EE799027F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
