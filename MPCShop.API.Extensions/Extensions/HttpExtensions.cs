@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MPCShop.Data.Services;
 
 namespace MPCShop.API.Extensions.Extensions;
 
@@ -14,17 +15,17 @@ public static class HttpExtensions
         app.MapGet($"/api/{node}s", HttpGetAsync<TEntity, TGetDto>);
         app.MapDelete($"/api/{node}s/" + "{id}", HttpDeleteAsync<TEntity>);
     }
-    public static void AddEndpoint<TEntity, TPostDto, TDeleteDto>(this WebApplication app)
-    where TEntity : class where TPostDto : class where TDeleteDto : class
+    public static void AddEndpoint<TEntity, TDto>(this WebApplication app)
+    where TEntity : class where TDto : class
     {
         var node = typeof(TEntity).Name.ToLower();
-        app.MapPost($"/api/{node}s", HttpPostReferenceAsync<TEntity, TPostDto>);
+        app.MapPost($"/api/{node}s", HttpPostReferenceAsync<TEntity, TDto>);
 
-        app.MapDelete($"/api/{node}s", async (IDbService db, [FromBody] TDeleteDto dto) =>
+        app.MapDelete($"/api/{node}s", async (IDbService db, [FromBody] TDto dto) =>
         {
             try
             {
-                if (!db.Delete<TEntity, TDeleteDto>(dto)) return Results.NotFound();
+                if (!db.Delete<TEntity, TDto>(dto)) return Results.NotFound();
 
                 if (await db.SaveChangesAsync()) return Results.NoContent();
             }
@@ -35,6 +36,7 @@ public static class HttpExtensions
             return Results.BadRequest($"Couldn't delete the {typeof(TEntity).Name} entity.");
         });
     }
+
 
     public static async Task<IResult> HttpSingleAsync<TEntity, TDto>(this IDbService db, int id)
     where TEntity : class, IEntity where TDto : class
@@ -107,6 +109,7 @@ public static class HttpExtensions
         }
         catch
         {
+            //return results not found
         }
 
         return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
