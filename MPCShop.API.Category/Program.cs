@@ -48,7 +48,7 @@ app.Run();
 void RegisterEndpoints()
 {
     app.AddEndpoint<ProductCategory, ProductCategoryDTO>();
-    //app.AddEndpoint<Category, CategoryPostDTO, CategoryPutDTO, CategoryGetDTO>(); //can be for size color season ...
+/*    app.AddEndpoint<Category, CategoryPostDTO, CategoryPutDTO, CategoryGetDTO>();*/ //can be for size color season ...
     /*app.MapGet($"/api/categorieswithdata", async (IDbService db) =>
     {
         try
