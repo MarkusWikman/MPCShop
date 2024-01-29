@@ -5,7 +5,7 @@
 namespace MPCShop.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class second : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -79,6 +79,19 @@ namespace MPCShop.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Seasons",
                 columns: table => new
                 {
@@ -107,25 +120,6 @@ namespace MPCShop.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CategoryFilters",
                 columns: table => new
                 {
@@ -145,6 +139,30 @@ namespace MPCShop.Data.Migrations
                         name: "FK_CategoryFilters_Filters_FilterId",
                         column: x => x.FilterId,
                         principalTable: "Filters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ColorProduct",
+                columns: table => new
+                {
+                    ColorsId = table.Column<int>(type: "int", nullable: false),
+                    ProductsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ColorProduct", x => new { x.ColorsId, x.ProductsId });
+                    table.ForeignKey(
+                        name: "FK_ColorProduct_Colors_ColorsId",
+                        column: x => x.ColorsId,
+                        principalTable: "Colors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ColorProduct_Products_ProductsId",
+                        column: x => x.ProductsId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -251,6 +269,11 @@ namespace MPCShop.Data.Migrations
                 column: "FilterId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ColorProduct_ProductsId",
+                table: "ColorProduct",
+                column: "ProductsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductBrands_BrandId",
                 table: "ProductBrands",
                 column: "BrandId");
@@ -259,11 +282,6 @@ namespace MPCShop.Data.Migrations
                 name: "IX_ProductCategories_CategoryId",
                 table: "ProductCategories",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_ColorId",
-                table: "Products",
-                column: "ColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductSeasons_SeasonId",
@@ -281,6 +299,9 @@ namespace MPCShop.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CategoryFilters");
+
+            migrationBuilder.DropTable(
+                name: "ColorProduct");
 
             migrationBuilder.DropTable(
                 name: "ProductBrands");
@@ -301,6 +322,9 @@ namespace MPCShop.Data.Migrations
                 name: "Filters");
 
             migrationBuilder.DropTable(
+                name: "Colors");
+
+            migrationBuilder.DropTable(
                 name: "Brands");
 
             migrationBuilder.DropTable(
@@ -314,9 +338,6 @@ namespace MPCShop.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sizes");
-
-            migrationBuilder.DropTable(
-                name: "Colors");
         }
     }
 }

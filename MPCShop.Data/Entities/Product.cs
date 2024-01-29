@@ -8,6 +8,6 @@ public class Product : IEntity
     public List<Size>? Sizes { get; set; }
     public List<Brand>? Brands { get; set; }
     public List<Season>? Seasons { get; set; }
-    //public List<Color>? Colors { get; set; }
+    public List<Color>? Colors { get; set; }
 
 }
