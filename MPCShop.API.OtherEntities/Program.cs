@@ -20,7 +20,7 @@ builder.Services.AddCors(policy =>
            .AllowAnyMethod()
     );
 });
-
+RegisterServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -71,7 +71,7 @@ void RegisterEndpoints()
 void RegisterServices()
 {
     ConfigureAutoMapper();
-    builder.Services.AddScoped<IDbService, CategoryDbService>();
+    builder.Services.AddScoped<IDbService, ProductDbService>();
 }
 
 void ConfigureAutoMapper()
