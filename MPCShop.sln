@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.API.Extensions", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPCShop.API.DTO", "MPCShop.API.DTO\MPCShop.API.DTO.csproj", "{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPCShop.API.OtherEntities", "MPCShop.API.OtherEntities\MPCShop.API.OtherEntities.csproj", "{0A42BB2B-17E4-44FC-88B1-C48837B7C1A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD7D58B-062B-43AF-BCD2-629B856E2D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A42BB2B-17E4-44FC-88B1-C48837B7C1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A42BB2B-17E4-44FC-88B1-C48837B7C1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A42BB2B-17E4-44FC-88B1-C48837B7C1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A42BB2B-17E4-44FC-88B1-C48837B7C1A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
