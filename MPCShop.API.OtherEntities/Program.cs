@@ -44,8 +44,16 @@ app.Run();
 
 void RegisterEndpoints()
 {
-    app.AddEndpoint<ProductCategory, ProductCategoryDTO>();
-    //app.AddEndpoint<Category, CategoryPostDTO, CategoryPutDTO, CategoryGetDTO>(); //can be for size color season ...
+
+    app.AddEndpoint<Product, ProductPostDTO, ProductPutDTO, ProductGetDTO>(); //can be for size color season ...
+    app.AddEndpoint<ProductBrand, ProductBrandDTO>();
+    app.AddEndpoint<Brand, BrandPostDTO, BrandPutDTO, BrandGetDTO>(); //can be for size color season ...
+    app.AddEndpoint<ProductColor, ProductColorDTO>();
+    app.AddEndpoint<Color, ColorPostDTO, ColorPutDTO, ColorGetDTO>();
+    app.AddEndpoint<ProductSize, ProductSizeDTO>();
+    app.AddEndpoint<Size, SizePostDTO, SizePutDTO, SizeGetDTO>();
+    app.AddEndpoint<ProductSeason, ProductSeasonDTO>();
+    app.AddEndpoint<Season, SeasonPostDTO, SeasonPutDTO, SeasonGetDTO>();
     /*app.MapGet($"/api/categorieswithdata", async (IDbService db) =>
     {
         try
