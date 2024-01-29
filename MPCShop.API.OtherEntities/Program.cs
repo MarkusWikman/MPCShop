@@ -70,11 +70,30 @@ void ConfigureAutoMapper()
 {
     var config = new MapperConfiguration(cfg =>
     {
-        cfg.CreateMap<Category, CategoryPostDTO>().ReverseMap();
-        cfg.CreateMap<Category, CategoryPutDTO>().ReverseMap();
-        cfg.CreateMap<Category, CategoryGetDTO>().ReverseMap();
-        cfg.CreateMap<Category, CategorySmallGetDTO>().ReverseMap();
-        cfg.CreateMap<ProductCategory, ProductCategoryDTO>().ReverseMap();
+        cfg.CreateMap<Product, ProductPostDTO>().ReverseMap();
+        cfg.CreateMap<Product, ProductPutDTO>().ReverseMap();
+        cfg.CreateMap<Product, ProductGetDTO>().ReverseMap();
+        //cfg.CreateMap<Product, ProductSmallGetDTO>().ReverseMap();
+        cfg.CreateMap<Color, ColorPostDTO>().ReverseMap();
+        cfg.CreateMap<Color, ColorPutDTO>().ReverseMap();
+        cfg.CreateMap<Color, ColorGetDTO>().ReverseMap();
+        //cfg.CreateMap<Color, ColorSmallGetDTO>().ReverseMap();
+        cfg.CreateMap<ProductColor, ProductColorDTO>().ReverseMap();
+        cfg.CreateMap<Size, SizePostDTO>().ReverseMap();
+        cfg.CreateMap<Size, SizePutDTO>().ReverseMap();
+        cfg.CreateMap<Size, SizeGetDTO>().ReverseMap();
+        //cfg.CreateMap<Size, SizeSmallGetDTO>().ReverseMap();
+        cfg.CreateMap<ProductSize, ProductSizeDTO>().ReverseMap();
+        cfg.CreateMap<Brand, BrandPostDTO>().ReverseMap();
+        cfg.CreateMap<Brand, BrandPutDTO>().ReverseMap();
+        cfg.CreateMap<Brand, BrandGetDTO>().ReverseMap();
+        //cfg.CreateMap<Brand, BrandSmallGetDTO>().ReverseMap();
+        cfg.CreateMap<ProductBrand, ProductBrandDTO>().ReverseMap();
+        cfg.CreateMap<Season, SeasonPostDTO>().ReverseMap();
+        cfg.CreateMap<Season, SeasonPutDTO>().ReverseMap();
+        cfg.CreateMap<Season, SeasonGetDTO>().ReverseMap();
+        //cfg.CreateMap<Season, SeasonSmallGetDTO>().ReverseMap();
+        cfg.CreateMap<ProductSeason, ProductSeasonDTO>().ReverseMap();
         //cfg.CreateMap<Filter, FilterGetDTO>().ReverseMap();
         //cfg.CreateMap<Size, OptionDTO>().ReverseMap();
         //cfg.CreateMap<Color, OptionDTO>().ReverseMap();
