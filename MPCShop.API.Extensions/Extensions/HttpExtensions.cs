@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MPCShop.Data.Services;
 
-namespace MPCShop.API.Extensions.Extensions;
+namespace eShop.API.Extensions.Extensions;
 
 public static class HttpExtensions
 {
@@ -9,23 +8,23 @@ public static class HttpExtensions
     where TEntity : class, IEntity where TPostDto : class where TPutDto : class where TGetDto : class
     {
         var node = typeof(TEntity).Name.ToLower();
-        app.MapPost($"/api/{node}s", HttpPostAsync<TEntity, TPostDto>);
+        app.MapPost($"/api/{node}s", HttpPostAsync<TEntity, TPostDto>); //the first part when we set sweager and the second part is when we run method and actual conversion
         app.MapPut($"/api/{node}s/" + "{id}", HttpPutAsync<TEntity, TPutDto>);
         app.MapGet($"/api/{node}s/" + "{id}", HttpSingleAsync<TEntity, TGetDto>);
         app.MapGet($"/api/{node}s", HttpGetAsync<TEntity, TGetDto>);
         app.MapDelete($"/api/{node}s/" + "{id}", HttpDeleteAsync<TEntity>);
     }
-    public static void AddEndpoint<TEntity, TDto>(this WebApplication app)
-    where TEntity : class where TDto : class
+    public static void AddEndpoint<TEntity, TPostDto, TDeleteDto>(this WebApplication app)
+    where TEntity : class where TPostDto : class where TDeleteDto : class
     {
         var node = typeof(TEntity).Name.ToLower();
-        app.MapPost($"/api/{node}s", HttpPostReferenceAsync<TEntity, TDto>);
+        //app.MapPost($"/api/{node}s", HttpPostReferenceAsync<TEntity, TPostDto>);
 
-        app.MapDelete($"/api/{node}s", async (IDbService db, [FromBody] TDto dto) =>
+        app.MapDelete($"/api/{node}s", async (IDbService db, [FromBody] TDeleteDto dto) =>
         {
             try
             {
-                if (!db.Delete<TEntity, TDto>(dto)) return Results.NotFound();
+                if (!db.Delete<TEntity, TDeleteDto>(dto)) return Results.NotFound();
 
                 if (await db.SaveChangesAsync()) return Results.NoContent();
             }
@@ -37,7 +36,6 @@ public static class HttpExtensions
         });
     }
 
-
     public static async Task<IResult> HttpSingleAsync<TEntity, TDto>(this IDbService db, int id)
     where TEntity : class, IEntity where TDto : class
     {
@@ -48,7 +46,7 @@ public static class HttpExtensions
     public static async Task<IResult> HttpGetAsync<TEntity, TDto>(this IDbService db)
     where TEntity : class where TDto : class =>
         Results.Ok(await db.GetAsync<TEntity, TDto>());
-    public static async Task<IResult> HttpPostAsync<TEntity, TPostDto>(this IDbService db, TPostDto dto)
+    public static async Task<IResult> HttpPostAsync<TEntity, TPostDto>(this IDbService db, TPostDto dto) //this IDbService db: is an injection method set up that is the part that when object is created will be die
     where TEntity : class, IEntity where TPostDto : class
     {
         try
@@ -109,7 +107,6 @@ public static class HttpExtensions
         }
         catch
         {
-            //return results not found
         }
 
         return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");

@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\images\ChildCoat1.png" />
+    <None Remove="wwwroot\images\ChildCoat2.png" />
+    <None Remove="wwwroot\images\ChildCoat3.png" />
+    <None Remove="wwwroot\images\ChildPant1.png" />
+    <None Remove="wwwroot\images\ChildPant2.png" />
+    <None Remove="wwwroot\images\ChildPant3.png" />
+    <None Remove="wwwroot\images\ChildPant4.png" />
+    <None Remove="wwwroot\images\ChildPant5.png" />
+    <None Remove="wwwroot\images\ChildShirt1.png" />
+    <None Remove="wwwroot\images\ChildShirt2.png" />
+    <None Remove="wwwroot\images\ChildShirt3.png" />
+    <None Remove="wwwroot\images\Logo.png" />
+    <None Remove="wwwroot\images\ManCoat1.png" />
+    <None Remove="wwwroot\images\ManCoat2.png" />
+    <None Remove="wwwroot\images\ManCoat3.png" />
+    <None Remove="wwwroot\images\ManCoat4.png" />
+    <None Remove="wwwroot\images\ManPan1.png" />
+    <None Remove="wwwroot\images\ManPan2.png" />
+    <None Remove="wwwroot\images\ManPan3.png" />
+    <None Remove="wwwroot\images\ManShirt1.png" />
+    <None Remove="wwwroot\images\ManShirt2.png" />
+    <None Remove="wwwroot\images\ManShirt3.png" />
+    <None Remove="wwwroot\images\WomanCoat1.png" />
+    <None Remove="wwwroot\images\WomanCoat2.png" />
+    <None Remove="wwwroot\images\WomanCoat3.png" />
+    <None Remove="wwwroot\images\WomanCoat4.png" />
+    <None Remove="wwwroot\images\WomanCoat5.png" />
+    <None Remove="wwwroot\images\WomanCoat6.png" />
+    <None Remove="wwwroot\images\WomanPan2.png" />
+    <None Remove="wwwroot\images\WomanPan3.png" />
+    <None Remove="wwwroot\images\WomanPan4.png" />
+    <None Remove="wwwroot\images\WomanPant1.png" />
+    <None Remove="wwwroot\images\WomanShirt1.png" />
+    <None Remove="wwwroot\images\WomanShirt2.png" />
+    <None Remove="wwwroot\images\WomanShirt3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="13.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MPCShop.API.DTO\MPCShop.API.DTO.csproj" />
+    <ProjectReference Include="..\MPCShop.UI.Http\MPCShop.UI.Http.csproj" />
+    <ProjectReference Include="..\MPCShop.UI.Models\MPCShop.UI.Models.csproj" />
+  </ItemGroup>
+
+</Project>

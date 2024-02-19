@@ -6,7 +6,7 @@ public class CategoryDbService(MPCShopContext db, IMapper mapper) : DbService(db
     {
         //IncludeNavigationsFor<Filter>();
         //IncludeNavigationsFor<Product>();
-        var result = await base.GetAsync<TEntity, TDto>();
-        return result;
+        return await base.GetAsync<TEntity, TDto>();
+
     }
 }

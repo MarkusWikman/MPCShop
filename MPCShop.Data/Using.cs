@@ -4,3 +4,7 @@ global using MPCShop.Data.Contexts;
 global using MPCShop.Data.Entities;
 global using MPCShop.Data.Services;
 global using Microsoft.EntityFrameworkCore;
+global using System.Linq.Expressions;
+global using MPCShop.API.DTO.DTOs;
+global using MPCShop.Data.Services;
+global using MPCShop.UI1.Services;
