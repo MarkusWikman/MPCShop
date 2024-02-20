@@ -63,7 +63,7 @@ public static class HttpExtensions
 
         return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
     }
-    public static async Task<IResult> HttpPutAsync<TEntity, TPutDto>(this IDbService db, TPutDto dto)
+    public static async Task<IResult> HttpPutAsync<TEntity, TPutDto>(this IDbService db, TPutDto dto, int id)
     where TEntity : class, IEntity where TPutDto : class
     {
         try
