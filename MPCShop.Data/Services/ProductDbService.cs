@@ -1,6 +1,4 @@
-﻿using eShop.Data.Services;
-
-namespace MPCShop.Data.Services;
+﻿namespace MPCShop.Data.Services;
 
 public class ProductDbService(MPCShopContext db, IMapper mapper) : DbService(db, mapper)
 {

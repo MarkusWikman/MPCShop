@@ -1,3 +1,5 @@
+using AutoMapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -46,13 +48,13 @@ void RegisterEndpoints()
 {
 
     app.AddEndpoint<Product, ProductPostDTO, ProductPutDTO, ProductGetDTO>(); //can be for size color season ...
-    app.AddEndpoint<ProductBrand, ProductBrandDTO>();
+    app.AddEndpoint<ProductBrand, ProductBrandDTO, ProductBrandDTO>();
     app.AddEndpoint<Brand, BrandPostDTO, BrandPutDTO, BrandGetDTO>(); //can be for size color season ...
-    app.AddEndpoint<ProductColor, ProductColorDTO>();
+    app.AddEndpoint<ProductColor, ProductBrandDTO, ProductColorDTO>();
     app.AddEndpoint<Color, ColorPostDTO, ColorPutDTO, ColorGetDTO>();
-    app.AddEndpoint<ProductSize, ProductSizeDTO>();
+    app.AddEndpoint<ProductSize, ProductBrandDTO, ProductSizeDTO>();
     app.AddEndpoint<Size, SizePostDTO, SizePutDTO, SizeGetDTO>();
-    app.AddEndpoint<ProductSeason, ProductSeasonDTO>();
+    app.AddEndpoint<ProductSeason, ProductBrandDTO, ProductSeasonDTO>();
     app.AddEndpoint<Season, SeasonPostDTO, SeasonPutDTO, SeasonGetDTO>();
     app.MapGet($"/api/productsbycategory/{{categoryId}}", async (IDbService db, int categoryId) =>
     {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-namespace eShop.API.Extensions.Extensions;
+namespace MPCShop.API.Extensions.Extensions;
 
 public static class HttpExtensions
 {

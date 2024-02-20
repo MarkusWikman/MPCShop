@@ -6,4 +6,3 @@ global using MPCShop.API.Extensions.Extensions;
 global using MPCShop.Data.Entities;
 global using AutoMapper;
 global using MPCShop.Data.Services;
-

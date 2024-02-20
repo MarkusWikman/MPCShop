@@ -1,11 +1,22 @@
 ﻿@using MPCShop.UI.Models.Link
 @if (LinkOption is not null)
 {
-    <button class="btn btn-link text-start text-decoration-none py-0 @(LinkOption.IsSelected ? "ps-0" : "ps-3")" @onclick="OnClick">
+    <button class="btn btn-link text-start text-decoration-none py-0 @(LinkOption.IsSelected ? "ps-0" : "ps-3")" @onclick="OnLinkPress">
         @if (LinkOption.IsSelected)
         {
             <i class="bi-caret-right"></i>
         }
         @LinkOption?.Name
     </button>
+
+}
+@code {
+    [Parameter] public LinkOption? LinkOption { get; set; }
+    [Parameter] public EventCallback<int> OnOptionCall { get; set; }
+
+    void OnLinkPress()
+    {
+        if (OnOptionCall.HasDelegate)
+            OnOptionCall.InvokeAsync(LinkOption.Id);
+    }
 }

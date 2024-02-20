@@ -1,6 +1,0 @@
-﻿@MPCShop.API.Products_HostAddress = http://localhost:5089
-
-GET {{MPCShop.API.Products_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
