@@ -3,3 +3,4 @@ global using MPCShop.API.DTO;
 global using AutoMapper;
 global using MPCShop.UI.Models.Link;
 global using MPCShop.API.DTO.DTOs;
+global using MPCShop.API.Extensions.Extensions;
