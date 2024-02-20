@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MPCShop.Data.Migrations
 {
     [DbContext(typeof(MPCShopContext))]
-    [Migration("20240220122649_updateProductTable")]
+    [Migration("20240220123634_updateProductTable")]
     partial class updateProductTable
     {
         /// <inheritdoc />
