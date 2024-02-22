@@ -1,6 +1,6 @@
 ﻿namespace MPCShop.Data.Contexts;
 
-public class MPCShopContext(DbContextOptions<MPCShopContext> builder) : DbContext(builder)
+public class MPCShopContext(DbContextOptions<MPCShopContext> options) : DbContext(options)
 {
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<Filter> Filters => Set<Filter>();
