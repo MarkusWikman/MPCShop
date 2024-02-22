@@ -1,4 +1,5 @@
-﻿@inject UIService Service
+﻿@page "/"
+@inject UIService Service;
 
 <NavComponent />
 @* <MenuComponent />
@@ -8,12 +9,12 @@
 
 <div id="viewport" class="d-flex vh-100">
     <CascadingValue Value="Service" Name="Service">
-        <AsideComponent OnChange="OnChange"/>
+        <AsideComponent OnChange="OnChange" />
         <ProductMainComponent OnChange="OnChange" />
-     </CascadingValue>
+    </CascadingValue>
 </div>
 
-@code{
+@code {
     void OnChange()
     {
 
