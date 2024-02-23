@@ -3,6 +3,7 @@ using MPCShop.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MPCShop.Data.Migrations
 {
     [DbContext(typeof(MPCShopContext))]
-    partial class MPCShopContextModelSnapshot : ModelSnapshot
+    [Migration("20240223131806_AddedSizeAndColorToProduct")]
+    partial class AddedSizeAndColorToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
