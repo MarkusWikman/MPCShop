@@ -13,4 +13,4 @@ public class LocalStorage(ILocalStorageService localStorage) : IStorageService
     public async Task SetAsync<T>(string key, T value) => //update
         await localStorage.SetItemAsync(key, value);
 }
-}
+

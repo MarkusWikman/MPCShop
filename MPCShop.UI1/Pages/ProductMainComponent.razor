@@ -1,4 +1,7 @@
-﻿<section class="d-flex flex-wrap">
+﻿@using MPCShop.UI.Storage.Services
+@inject IMapper mapper
+
+<section class="d-flex flex-wrap">
     @foreach (var product in Service!.Products)
     {
         <div class="card mb-0" style="max-width: 540px;">

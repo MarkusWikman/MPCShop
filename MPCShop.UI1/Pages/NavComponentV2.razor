@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-start">
         @* To the left *@
         <a class="navbar-brand" href="#" @onclick="RemoveOtherComponents"><img src="images/Logo2.png" alt="logo2" /></a>
-        @foreach (var group in Service!.CaregoryLinkGroups)
+        @foreach (var group in UICartService!.CaregoryLinkGroups)
         {
             <CategoryTitleComponent LinkGroup="group" OnTitleUpdate="OnTitlePressedCallBack" />
         }
@@ -25,7 +25,7 @@
             <div class="position-relative">
                 <button id="cart-button" data-bs-toggle="modal" data-bs-target="#cart" type="button" class="btn"><i class="bi bi-cart"></i></button>
 
-                @* <div class="cart-count bg-danger text-white rounded-circle position-absolute">3</div> *@
+                @*<div class="cart-count bg-danger text-white rounded-circle position-absolute">@UICartService!.CartItems.Count</div>*@
             </div>
 
             <div></div>
@@ -41,14 +41,14 @@
 
 
 @code {
-    [CascadingParameter(Name = "Service")] public UIService? Service { get; set; }
+    [CascadingParameter(Name = "Service")] public UIService? UICartService { get; set; }
     [Parameter] public EventCallback OnChange { get; set; }
 
     async Task OnTitlePressedCallBack(int id)
     {
-        if (OnChange.HasDelegate && Service is not null)
+        if (OnChange.HasDelegate && UICartService is not null)
         {
-            await Service.OnCategoryLinkClick(id);
+            await UICartService.OnCategoryLinkClick(id);
             await OnChange.InvokeAsync(id);
         }
     }
@@ -59,11 +59,22 @@
     }
     protected override async Task OnInitializedAsync()
     {
-        if (Service is not null)
+        if (UICartService is not null)
         {
-            await Service.GetLinkGroup();
+            await UICartService.GetLinkGroup();
             await OnChange.InvokeAsync();
         }
     }
+    @*protected override async Task OnParametersSetAsync()
+    {
+        UICartService!.CartItems =
+            await UICartService!.ReadStorage<List<CartItemDTO>>("CartItems") ?? [];
+    }*@
+
+   @* async Task OnRemoveCartItem(CartItemDTO? cartItem)
+    {
+        UICartService!.CartItems.Remove(cartItem);
+        await UICartService!.SaveToStorage("CartItems", UICartService!.CartItems);
+    }*@
 
 }
