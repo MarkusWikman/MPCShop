@@ -55,6 +55,7 @@
     <ProjectReference Include="..\MPCShop.API.DTO\MPCShop.API.DTO.csproj" />
     <ProjectReference Include="..\MPCShop.UI.Http\MPCShop.UI.Http.csproj" />
     <ProjectReference Include="..\MPCShop.UI.Models\MPCShop.UI.Models.csproj" />
+    <ProjectReference Include="..\MPCShop.UI.Storage\MPCShop.UI.Storage.csproj" />
   </ItemGroup>
 
 </Project>
