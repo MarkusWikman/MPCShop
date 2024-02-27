@@ -2,7 +2,7 @@
 
     <div class="d-flex justify-content-start">
         @* To the left *@
-        <a class="navbar-brand" href="#"><img src="images/Logo2.png" alt="logo2" /></a>
+        <a class="navbar-brand" href="#" @onclick="RemoveOtherComponents"><img src="images/Logo2.png" alt="logo2" /></a>
         @foreach (var group in Service!.CaregoryLinkGroups)
         {
             <CategoryTitleComponent LinkGroup="group" OnTitleUpdate="OnTitlePressedCallBack" />
@@ -53,6 +53,10 @@
         }
     }
 
+    private void RemoveOtherComponents()
+    {
+        
+    }
     protected override async Task OnInitializedAsync()
     {
         if (Service is not null)
