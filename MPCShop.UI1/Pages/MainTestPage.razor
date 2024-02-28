@@ -1,14 +1,16 @@
-﻿@page "/"
-@inject UIService Service;
+﻿@* @page "/" *@
+@inject UIService Service
 
-<CascadingValue Value="Service" Name="Service">
-    <NavComponentV2 OnChange="OnChange" />
+<NavComponent UICartService="Service" />
+@* <MenuComponent />
+<CarouselComponent />
+<CardListComponent />
+ *@
 
-</CascadingValue>
-
-<div id="viewport" class="d-flex vh-100 justify-content-center">
+<div id="viewport" class="d-flex vh-100">
     <CascadingValue Value="Service" Name="Service">
-        <ProductMainComponent />
+        <AsideComponent OnChange="OnChange" />
+        <ProductMainComponent OnChange="OnChange" />
     </CascadingValue>
 </div>
 
@@ -17,5 +19,4 @@
     {
 
     }
-
 }
