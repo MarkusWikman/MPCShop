@@ -9,7 +9,7 @@ public class UIService(CategoryHttpClient categoryHttp,
     List<CategoryGetDTO> Categories { get; set; } = [];
     public List<ProductGetDTO> Products { get; private set; } = [];
     public List<CartItemDTO> CartItems { get; set; } = [];
-    public List<LinkGroup> CaregoryLinkGroups { get; private set; } =
+    public List<LinkGroup> CategoryLinkGroups { get; private set; } =
     [
         new LinkGroup
         {
@@ -26,8 +26,8 @@ public class UIService(CategoryHttpClient categoryHttp,
     public async Task GetLinkGroup()
     {
         Categories = await categoryHttp.GetCategoriesAsync();
-        CaregoryLinkGroups[0].LinkOptions = mapper.Map<List<LinkOption>>(Categories);
-        var linkOption = CaregoryLinkGroups[0].LinkOptions.FirstOrDefault();
+        CategoryLinkGroups[0].LinkOptions = mapper.Map<List<LinkOption>>(Categories);
+        var linkOption = CategoryLinkGroups[0].LinkOptions.FirstOrDefault();
         linkOption!.IsSelected = true;
     }
 
@@ -35,8 +35,8 @@ public class UIService(CategoryHttpClient categoryHttp,
     {
         CurrentCategoryId = id;
         await GetProductsAsync();
-        CaregoryLinkGroups[0].LinkOptions.ForEach(l => l.IsSelected = false);
-        CaregoryLinkGroups[0].LinkOptions.Single(l => l.Id.Equals(CurrentCategoryId)).IsSelected = true;
+        CategoryLinkGroups[0].LinkOptions.ForEach(l => l.IsSelected = false);
+        CategoryLinkGroups[0].LinkOptions.Single(l => l.Id.Equals(CurrentCategoryId)).IsSelected = true;
     }
 
     public async Task GetProductsAsync() =>

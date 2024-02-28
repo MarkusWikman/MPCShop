@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-start">
         @* To the left *@
         <a class="navbar-brand" href="#" @onclick="RemoveOtherComponents"><img src="images/Logo2.png" alt="logo2" /></a>
-        @foreach (var group in UICartService!.CaregoryLinkGroups)
+        @foreach (var group in UICartService!.CategoryLinkGroups)
         {
             <CategoryTitleComponent LinkGroup="group" OnTitleUpdate="OnTitlePressedCallBack" />
         }
