@@ -73,8 +73,9 @@ nav a img {
     margin-top: -10px;
     margin-right: -8px;
     font-size: 9pt;
-    background-color: darkorange;
-    font-family: 'Script MT'
+    font-family: 'Script MT'; 
+    border: 2px solid orange;
+    color: white;
 }
 
 .btn-link {
@@ -88,7 +89,6 @@ nav a img {
     font-weight: bold;
     color: #333;
 }
-
 
 
 .carousel.slide {
