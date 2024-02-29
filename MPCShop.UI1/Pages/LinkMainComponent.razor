@@ -1,7 +1,7 @@
 ﻿@using MPCShop.UI.Models.Link
 
 <article>
-    <div class="bg-secondary text-white p-2"><strong>@LinkGroup?.Name</strong></div>
+    <div class="bg-transparent text-black p-2"><strong>@LinkGroup?.Name</strong></div> @*It is for Category in the page*@
     <div class="d-flex flex-column">
         @foreach (var link in LinkGroup!.LinkOptions)
         {

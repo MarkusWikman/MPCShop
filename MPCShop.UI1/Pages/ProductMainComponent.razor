@@ -7,11 +7,11 @@
         <div class="card mb-0" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="@product.PictureURL" class="img-fluid rounded-start" alt="...">
+                    <img src="@product.PictureURL" class="img-fluid rounded-start"  alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">@product.Name</h5>
+                        <h5 class="card-title product-title">@product.Name</h5>
                         <p class="card-text">@product.Description.Truncate(50)</p>
                     </div>
                 </div>
@@ -27,6 +27,7 @@
                                    @onclick="() => OnSizeClick(product, size)"
                                    autocomplete="off" checked>
                             <label class="btn btn-outline-primary btn-radio"
+                                   style="color: black; border-color: black;"
                                    for="size-@product.Id-@size.Id">@size.Name.ToUpper()</label>
                         }
                     </div>
@@ -45,7 +46,7 @@
                     }
                 }
 
-                 <button class="btn btn-sm btn-success" @onclick="() => AddToCart(product)"><i class="bi-cart"></i></button> 
+                <button class="btn btn-sm btn-success bg-secondary border-secondary" @onclick="() => AddToCart(product)"><i class="bi-cart"></i></button>
 
             </div>
         </div>
