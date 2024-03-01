@@ -101,9 +101,9 @@ nav a img {
 }
 
 .image-container {
-    max-width: 15%; /* Ensure the container doesn't exceed the width of its parent */
+    width: 200px; /* Ensure the container doesn't exceed the width of its parent */
     text-align: center; /* Center the content horizontally */
-    height: 360px; /* Set fixed height */
+    height: 400px; /* Set fixed height */
     overflow: hidden; /* Hide overflow content */
     border-radius: 0 0 5px 5px; /* Add rounded corners to the bottom */
 }
@@ -120,7 +120,7 @@ nav a img {
     .image-container h1 {
         margin-top: 1px; /* Add some space between the image and text */
         /*margin-bottom: 1px;*/
-        padding-left: 2px;
+        padding-left: 4px;
         color: dimgrey;
     }
 
