@@ -52,11 +52,16 @@
     }
 </section>
 @* <FooterComponent /> *@
-
+@if (!string.IsNullOrEmpty(error))
+{
+    <div style="background-color: red; color: white; font-family: 'Arial'; box-sizing:border-box; width: 380px; height: 40px; line-height: 30px;">@error</div>
+}
 
 @code {
+    
     [CascadingParameter(Name = "Service")] public UIService? Service { get; set; }
     [Parameter] public EventCallback OnChange { get; set; }
+    string error = string.Empty;
 
     void OnColorClick(ProductGetDTO product, ColorGetDTO color)
     {
@@ -79,17 +84,36 @@
     }
     async Task AddToCart(ProductGetDTO product)
     {
+        try
+        {
         //TODO: Spara flera produkter till shopping cart
         //TODO: Visa produkterna i shopping carten
-        //TODO: Ta bort produkt från shopping cart
+        //TODO: Ta bort produkt från shopping cart'
+
         var cartItem = mapper.Map<CartItemDTO>(product);
         cartItem.Color = product.Colors!.FirstOrDefault(c => c.IsSelected);
         cartItem.Size = product.Sizes!.FirstOrDefault(s => s.IsSelected);
-        Service!.CartItems.Add(cartItem);
-        await Service!.SaveToStorage("CartItems", Service!.CartItems);
+        if (cartItem.Color == null ||  cartItem.Size == null)
+          {
+                
+                error = "Error: Color or Size is not selected for the product.";
+                return; 
+          }
+         Service!.CartItems.Add(cartItem);
+         await Service!.SaveToStorage("CartItems", Service!.CartItems);
 
         if (OnChange.HasDelegate)
-            await OnChange.InvokeAsync();
+                await OnChange.InvokeAsync();
+            
+            error = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            
+            
+            error = $"An error occurred: {ex.Message}";
+           
+        }
 
         //await Storage.SetAsync("MyKey", product);
         //await Service!.SaveToStorage("MyKey", product);
@@ -103,6 +127,7 @@
 
         //var product = Service!.Products.Single(p => p.Id == id);
     }
+
 
 
 
@@ -155,3 +180,4 @@
 
             </div> *@
 }
+
