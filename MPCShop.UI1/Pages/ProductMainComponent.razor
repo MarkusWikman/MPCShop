@@ -1,61 +1,62 @@
 ﻿@using MPCShop.UI.Storage.Services
 @inject IMapper mapper
+<div style="display: flex; flex-direction: column;align-items: center;">
+    <section class="d-flex flex-wrap">
+        @foreach (var product in Service!.Products)
+        {
 
-<section class="d-flex flex-wrap">
-    @foreach (var product in Service!.Products)
-    {
+            <div class="image-container m-2 bg-white">
+                <img src="@product.PictureURL" alt="Man Coat Image">
+                <h1 style="font-size: 20px; margin: 0;">@product.Name</h1>
 
-        <div class="image-container m-2 bg-white">
-            <img src="@product.PictureURL" alt="Man Coat Image">
-            <h1 style="font-size: 20px; margin: 0;">@product.Name</h1>
+                <div class="d-flex justify-content-around">
+                    <div class="d-flex flex-column py-2">
+                        @if (product.Sizes!.Count > 0)
+                        {
+                            <div class="btn-group btn-group-sm py-1" role="group" aria-label="Basic radio toggle button group">
+                                @foreach (var size in product.Sizes)
+                                {
+                                    <input type="radio" class="btn-check" name="btnradio"
+                                           id="size-@product.Id-@size.Id"
+                                           @onclick="() => OnSizeClick(product, size)"
+                                           autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary btn-sm btn-radio"
+                                           style="color: black; border-color: black; font-size: 8px; padding: 2px 2px"
+                                           for="size-@product.Id-@size.Id">@size.Name.ToUpper()</label>
+                                }
+                            </div>
+                        }
 
-            <div class="d-flex justify-content-around">
-                <div class="d-flex flex-column py-2">
-                    @if (product.Sizes!.Count > 0)
-                    {
-                        <div class="btn-group btn-group-sm py-1" role="group" aria-label="Basic radio toggle button group">
-                            @foreach (var size in product.Sizes)
-                            {
-                                <input type="radio" class="btn-check" name="btnradio"
-                                       id="size-@product.Id-@size.Id"
-                                       @onclick="() => OnSizeClick(product, size)"
-                                       autocomplete="off" checked>
-                                <label class="btn btn-outline-primary btn-sm btn-radio"
-                                       style="color: black; border-color: black; font-size: 8px; padding: 2px 2px"
-                                       for="size-@product.Id-@size.Id">@size.Name.ToUpper()</label>
-                            }
-                        </div>
-                    }
+                        @if (product.Colors!.Count > 0)
+                        {
+                            <div class="d-flex flex-row py-1">
+                                <!-- Ensure buttons are stacked horizontally -->
+                                @foreach (var color in product.Colors)
+                                {
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="color-@product.Id-@color.Id" id="color-@product.Id-@color.Id"
+                                               autocomplete="off" @onclick="() => OnColorClick(product, color)">
+                                        <label class="btn btn-sm btn-outline-dark"
+                                               style="background-color:#@color.BGColor; color:#@(color.IsSelected ? color.TextColor : color.BGColor); font-size: 6px; padding: 4px 4px"
+                                               for="color-@product.Id-@color.Id"><i class="bi-check"></i></label>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
 
-                    @if (product.Colors!.Count > 0)
-                    {
-                        <div class="d-flex flex-row py-1">
-                            <!-- Ensure buttons are stacked horizontally -->
-                            @foreach (var color in product.Colors)
-                            {
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="color-@product.Id-@color.Id" id="color-@product.Id-@color.Id"
-                                           autocomplete="off" @onclick="() => OnColorClick(product, color)">
-                                    <label class="btn btn-sm btn-outline-dark"
-                                           style="background-color:#@color.BGColor; color:#@(color.IsSelected ? color.TextColor : color.BGColor); font-size: 6px; padding: 4px 4px"
-                                           for="color-@product.Id-@color.Id"><i class="bi-check"></i></label>
-                                </div>
-                            }
-                        </div>
-                    }
+                    <button class="btn btn-sm btn-success bg-secondary border-secondary ms-2" style="margin-block: 15px;" @onclick="() => AddToCart(product)"><i class="bi-handbag"></i></button>
+
                 </div>
-
-                <button class="btn btn-sm btn-success bg-secondary border-secondary ms-2" style="margin-block: 15px;" @onclick="() => AddToCart(product)"><i class="bi-handbag"></i></button>
-
             </div>
-        </div>
+        }
+    </section>
+    @* <FooterComponent /> *@
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <div style="background-color: orangered; color: white; font-family: 'Arial'; box-sizing:border-box; width: 380px; height: 40px; line-height: 30px; text-align:center; margin-top: 10px;">@error</div>
     }
-</section>
-@* <FooterComponent /> *@
-@if (!string.IsNullOrEmpty(error))
-{
-    <div style="background-color: red; color: white; font-family: 'Arial'; box-sizing:border-box; width: 380px; height: 40px; line-height: 30px;">@error</div>
-}
+</div>
 
 @code {
     
@@ -86,9 +87,6 @@
     {
         try
         {
-        //TODO: Spara flera produkter till shopping cart
-        //TODO: Visa produkterna i shopping carten
-        //TODO: Ta bort produkt från shopping cart'
 
         var cartItem = mapper.Map<CartItemDTO>(product);
         cartItem.Color = product.Colors!.FirstOrDefault(c => c.IsSelected);
@@ -109,10 +107,8 @@
         }
         catch (Exception ex)
         {
-            
-            
-            error = $"An error occurred: {ex.Message}";
            
+            error = $"An error occurred: {ex.Message}";
         }
 
         //await Storage.SetAsync("MyKey", product);
